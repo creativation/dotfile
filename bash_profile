@@ -12,7 +12,7 @@ parse_git_branch() {
 #export PS1="\u@\h \W\[\033[32m\]\$(parse_git_branch)\[\033[00m\] $ "
 
 ##
-# Your previous .bash_profile file was backed up as /Users/.bash_profile.macports-saved_2014-01-29_at_22:15:48
+# Your previous /Users/Creativation/.bash_profile file was backed up as /Users/Creativation/.bash_profile.macports-saved_2014-01-29_at_22:15:48
 ##
 
 # MacPorts Installer addition on 2014-01-29_at_22:15:48: adding an appropriate PATH variable for use with MacPorts.
@@ -34,5 +34,58 @@ source ~/.git-completion
 #
 #function __git_branch {
 #  __git_ps1 " (%s)"
-"~/.bash_profile" 91L, 1916C
+#}
+
+bash_prompt() {
+  local NONE="\[\033[0m\]"    # unsets color to term's fg color
+
+  # regular colors
+  local K="\[\033[0;30m\]"    # black
+  local R="\[\033[0;31m\]"    # red
+  local G="\[\033[0;32m\]"    # green
+  local Y="\[\033[0;33m\]"    # yellow
+  local B="\[\033[0;34m\]"    # blue
+  local M="\[\033[0;35m\]"    # magenta
+  local C="\[\033[0;36m\]"    # cyan
+  local W="\[\033[0;37m\]"    # white
+
+  local UC=$W                 # user's color
+  [ $UID -eq "0" ] && UC=$R   # root's color
+
+  #PS1="[ \t $C\u@\h$NONE:$W$G\w$Y\$(__git_branch)$R\$(__git_dirty)$NONE ]\\$ "
+  PS1="[\t $C\[\033[00;31m\]\u\[\033[0;37m\]@\[\033[00;36m\]\h$NONE]:\[\033[01;34m\]\w$NONE\[\033[32m\]\$(parse_git_branch)\[\033[00m\] $ "
+}
+
+bash_prompt
+unset bash_prompt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
